@@ -22,7 +22,11 @@
   min-height: 180px;   /* fallback for very small screens */
   overflow: hidden;
 }
-
+.centerMyImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* center any content inside the banner */
 .header1 .header-content {
