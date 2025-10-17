@@ -1,0 +1,118 @@
+:root {
+    --hue: calc(var(--student-hue, 81));
+    --primary: hsl(var(--hue), 70%, 45%);
+    --primary-600: hsl(var(--hue), 70%, 35%);
+    --bg: hsl(var(--hue), 45%, 97%);
+    --ink: #1b1b1b;
+}
+
+* {
+    box-sizing: border-box;
+}
+.header1 {
+  background-image: url("/images_folder/bannerthing.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  position: relative;
+
+  /* preserve original aspect ratio */
+  padding-top: 39.59%; /* 645 / 1629 * 100% */
+  min-height: 180px;   /* fallback for very small screens */
+  overflow: hidden;
+}
+
+
+/* center any content inside the banner */
+.header1 .header-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  color: white;
+}
+body {
+    margin: 0;
+    font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+}
+div.card#homecard {
+    background-color: black;
+    background: url("/images_folder/pc-fire.gif");
+    background-size: cover;       /* scales the image to cover the entire div */
+    background-position: center;  /* keeps it centered */
+    background-repeat: no-repeat; /*stops the thingy from repeating */
+}
+div.card#servicecard {
+    background-color: black;
+    background: url("/images_folder/hammer-pc.gif");
+    background-size: cover;       /* scales the image to cover the entire div */
+    background-position: center;  /* keeps it centered */
+    background-repeat: no-repeat; /*stops the thingy from repeating */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.site-header {
+    background: var(--primary);
+    color: #fff;
+    padding: .75rem 0;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-weight: 600;
+    opacity: .9;
+}
+
+nav a.active,
+nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.hero,
+.card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .06);
+    margin: 1rem 0;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: .6rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: var(--primary-600);
+}
+
+.site-footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    color: #555;
+    text-align: center;
+}
