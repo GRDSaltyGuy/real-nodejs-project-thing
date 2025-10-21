@@ -22,6 +22,22 @@
   min-height: 180px;   /* fallback for very small screens */
   overflow: hidden;
 }
+#shoptitlecardthingy {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("/images_folder/shoptitlethingy.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 50%;
+  position: relative;
+
+  /* preserve original aspect ratio */
+  padding-top: 39.59%; /* 645 / 1629 * 100% */
+  min-height: 180px;   /* fallback for very small screens */
+  overflow: hidden;
+}
 .centerMyImage {
     display: block;
     margin-left: auto;

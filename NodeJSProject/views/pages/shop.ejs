@@ -1,43 +1,73 @@
 <%- include('../partials/head') %>
-<div class="card">
-  <h1>Shop</h1>
-  <p>take a look at our inventory</p>
-</div>
-<div class= "card" id="shopCard1">
-  <div class="card h-100 shadow-sm">
-    <h4 class="card-title">Computers for sale</h4>
-    <p class="card-text">we have a wide range of options, from extracted from e-waste to not-very-budget-friendly.</p>
-    <!--Option 1-->
-    <div class="col-md-6 mb-4">
-      <div class="card text-center" id="shop1">
-        <img class="centerMyImage" src="/images_folder/purplepc1.png" alt="purple pc 1" height="200px" width="200px">
-        <p class="card-text">Looking for an option that is ...okay for gaming at a suprising price? check out this option!</p>
-        <a href="/option_1" class="btn btn-primary">More info</a>
+
+<div class="container-lg my-5">
+  <div class="card text-center p-4 mb-5" id="shoptitlecardthingy">
+    
+  </div>
+  <h1>we have a wide range of options, from extracted from e-waste to not-very-budget-friendly.</h1>
+  <!-- Bootstrap row for grid layout -->
+  <div class="row justify-content-center g-4">
+    <!-- Option 1 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center h-100 shadow-sm p-3">
+        <img src="/images_folder/purplepc1.png" alt="purple pc 1" class="img-fluid mx-auto d-block" style="height: 200px; width: 200px; object-fit: contain;">
+        <div class="card-body">
+          <h5 class="card-title mt-3">ready to "game"</h5>
+          <p class="card-text">Looking for an option that is ...okay for gaming at a suprisingly medium price? This option has a reasonable price
+             and quite un-reasonable performance. check out this option!
+          </p>
+          <a href="/option_1" class="btn btn-primary">More info</a>
+        </div>
       </div>
     </div>
-    <!--option 1 end-->
-    <!--Option 2-->
-    <div class="col-md-6 mb-4">
-      <div class="card text-center" id="shop2">
-        <img class="centerMyImage" src="/images_folder/redpc2.png" alt="redpc2" height="200px" width="200px">
-        <p class="card-text">If the other option was too expensive, then this one might be the option for you. a lower price with an 
+
+    <!-- Option 2 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center h-100 shadow-sm p-3">
+        <img src="/images_folder/redpc2.png" alt="redpc2" class="img-fluid mx-auto d-block" style="height: 200px; width: 200px; object-fit: contain;">
+        <div class="card-body">
+          <h5 class="card-title mt-3">budget gamer</h5>
+          <p class="card-text">If the other option was too expensive, then this one might be the option for you. a lower price with an 
           ability to play... some games, you should consider this option
-        </p>
-        <a href="/option_2" class="btn btn-primary">More info</a>
+          </p>
+          <a href="/option_2" class="btn btn-primary">More info</a>
+        </div>
       </div>
     </div>
-    <!--option 2 end-->
-    <!--Option 3-->
-    <div class="col-md-6 mb-4">
-      <div class="card text-center" id="shop3">
-        <img class="centerMyImage" src="/images_folder/ancientpc.png" alt="ancient pc" height="200px" width="200px">
-        <p class="card-text">Still too expensive? this computer should fit within anyones budget. You might not be able to
+
+    <!-- Option 3 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center h-100 shadow-sm p-3">
+        <img src="/images_folder/ancientpc.png" alt="ancient pc" class="img-fluid mx-auto d-block" style="height: 200px; width: 200px; object-fit: contain;">
+        <div class="card-body">
+          <h5 class="card-title mt-3">muy budget</h5>
+          <p class="card-text">Still too expensive? this computer should fit within anyones budget. You might not be able to
           play games, .... or do anything on it, but it is a nice piece of history huh?
-        </p>
-        <a href="/option_3" class="btn btn-primary">More info</a>
+          </p>
+          <a href="/option_3" class="btn btn-primary">More info</a>
+        </div>
       </div>
     </div>
-    <!--option 3 end-->
+    <!-- Option 4 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center h-100 shadow-sm p-3">
+        <img src="/images_folder/whitepc3.png" alt="redpc2" class="img-fluid mx-auto d-block" style="height: 200px; width: 200px; object-fit: contain;">
+        <div class="card-body">
+          <h5 class="card-title mt-3">"High end"</h5>
+          <p class="card-text">
+            are you looking to have the best performace in your friend group? if you sell one of your kidneys and steal another
+            from a homeless man, you should be able to afford this.
+          </p>
+          <a href="/option_4" class="btn btn-primary">More info</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!--The i tag thing is for the bootstrap glyphicon things -->
+      <a href="/" class="btn btn-primary"><i class="bi bi-arrow-bar-left"></i> go back to home</a>     
+    </div>
+ 
   </div>
 </div>
+
 <%- include('../partials/foot') %>
