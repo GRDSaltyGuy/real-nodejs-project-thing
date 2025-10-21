@@ -136,3 +136,48 @@ nav a:hover {
     color: #555;
     text-align: center;
 }
+
+/* stuff for ads, ill go through and annotate it at some point.                                             */
+.ad-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* large banner + right column of small ads on wide screens */
+  gap: 1rem;
+  align-items: start;
+}
+
+/* mobile fallback */
+@media (max-width: 900px) {
+  .ad-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ad {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.ad-large { padding: 0.5rem; }
+.ad-small { padding: 0.5rem; }
+
+.ad-img { width:100%; height:auto; display:block; object-fit:cover; }
+
+.ad-copy {
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  color:#222;
+}
+
+/* add little "sponsored" label for satire */
+.ad::after{
+  content: "Sponsored";
+  display:block;
+  font-size:0.7rem;
+  color:#666;
+  padding:0.25rem 0;
+  opacity:0.8;
+}
