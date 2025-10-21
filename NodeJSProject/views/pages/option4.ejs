@@ -1,0 +1,13 @@
+<%- include('../partials/head') %>
+<div class="card">
+  <h1>Checkout</h1>
+  <p>Fill out the field below to start the proceess</p>
+  <form class="card" method="post" action="#">
+    <label>Name<br><input type="text" placeholder="Your name" required></label><br><br>
+    <label>Email<br><input type="email" placeholder="you@example.com" required></label><br><br>
+    <label>Enter device type name<br><input type="text" placeholder="Ex: Dell optiplex version 27Z(fake name)"></label><br><br>
+    <label>Message<br><textarea rows="4" placeholder="Any other information you need to provide us"></textarea></label><br><br>
+    <button class="btn" type="submit" disabled>Submit (demo)</button>
+  </form>
+</div>
+<%- include('../partials/foot') %>

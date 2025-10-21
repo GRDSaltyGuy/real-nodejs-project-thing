@@ -28,6 +28,20 @@ app.get("/shop", (req, res) => res.render("pages/shop", { title: "Shop" }));
 
 //this is a route to the repair checkout that im making. I did this one by myself
 app.get("/repaircheckout", (req, res) => res.render("pages/repaircheckout", { title: "Repiar Checkout" }));
+//end
+
+//option1start
+app.get("/option1", (req, res) => res.render("pages/option1", { title: "PC 1 checkout" }));
+//end
+//option2start
+app.get("/option2", (req, res) => res.render("pages/option2", { title: "PC 2 checkout" }));
+//end
+//option3start
+app.get("/option3", (req, res) => res.render("pages/option3", { title: "PC 3 checkout" }));
+//end
+//option4start
+app.get("/option4", (req, res) => res.render("pages/option4", { title: "PC 4 checkout" }));
+//end
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
