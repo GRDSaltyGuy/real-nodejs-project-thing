@@ -172,7 +172,7 @@ nav a:hover {
   color:#222;
 }
 
-/* add little "sponsored" label for satire */
+/* adds a little "sponsored" label */
 .ad::after{
   content: "Sponsored";
   display:block;
@@ -181,3 +181,97 @@ nav a:hover {
   padding:0.25rem 0;
   opacity:0.8;
 }
+
+/*Scary code segment 1*/
+/* Custom dark tab styles */
+.nav-tabs-dark {
+    background-color: #222;
+    border-bottom: 1px solid #080808;
+}
+
+.nav-tabs-dark > li > a {
+    color: #9d9d9d;
+    background-color: #222;
+    border: 1px solid transparent;
+    padding: 15px 30px; /* Increase padding to make tabs bigger */
+    font-size: 18px; /* Increase font size */
+    display: inline-block;
+}
+
+.nav-tabs-dark > li.active > a,
+.nav-tabs-dark > li > a:hover,
+.nav-tabs-dark > li.active > a:focus {
+    color: #fff;
+    background-color: #080808;
+    border: 1px solid #080808;
+}
+
+.dropdown-menu {
+    background-color: #222;
+}
+
+.dropdown-menu > li > a {
+    color: #9d9d9d;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #080808;
+    color: #fff;
+}
+
+/* Use center-block for centering the tab container */
+.nav-tabs {
+    width: auto; /* Allow the tabs to only take up their content width */
+}
+/*Scary chatgpt code segment 1 end*/
+.inverse {
+    background-color: #121212;
+}
+#homeJumbotron {
+    background-color: #303536;
+    color: green
+}
+.Logo {
+    width: 500px;
+    height: 500px;
+}
+.carousel-fixed .carousel-inner,
+.carousel-fixed .carousel-item {
+  height: 100%;
+}
+
+.carousel-fixed img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.filterColors {
+    color:ghostwhite
+}
+.item2 {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+.hidden {
+    display: none;
+}
+/* Optional, should change images in carousel to have a border
+.item {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+*/
+.carousel .control-circle {
+  width: 3.25rem;
+  height: 3.25rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+.carousel-control-prev .control-circle { left: 10px; }
+.carousel-control-next .control-circle { right: 10px; }

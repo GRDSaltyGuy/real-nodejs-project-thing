@@ -10,4 +10,56 @@
     <button class="btn" type="submit" disabled>Submit (demo)</button>
   </form>
 </div>
+<!--Mid carousel code-->
+<div class="card">
+<div class="carousel-fixed mx-auto">
+  <div id="carouselOne" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="3000">
+    <!-- indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselOne" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselOne" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselOne" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- slides -->
+    <div class="carousel-inner h-100">
+      <div class="carousel-item active h-100">
+        <img src="/images_folder/yellowpc1.png" class="d-block w-100 h-100" style="object-fit:cover;" alt="Yellow PC">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images_folder/orangepc1.png" class="d-block w-100 h-100" style="object-fit:cover;" alt="Orange PC">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images_folder/purplepc1.png" class="d-block w-100 h-100" style="object-fit:cover;" alt="Purple PC">
+      </div>
+    </div>
+
+    <!-- controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselOne" data-bs-slide="prev">
+      <span class="control-circle bg-dark bg-opacity-50 rounded-circle p-2 d-inline-flex align-items-center justify-content-center">
+        <i class="bi bi-chevron-left text-white fs-4" aria-hidden="true"></i>
+      </span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselOne" data-bs-slide="next">
+      <span class="control-circle bg-dark bg-opacity-50 rounded-circle p-2 d-inline-flex align-items-center justify-content-center">
+        <i class="bi bi-chevron-right text-white fs-4" aria-hidden="true"></i>
+      </span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="card text-center h-100 shadow-sm p-3">
+  <div class="card-body">
+    <h5 class="card-title mt-3">Option 1</h5>
+    <p class="card-text">SPECS: xxxx,xxx,xxxxxx,xxxxxxxxxx,xxxxxxx
+    </p>
+    <a href="/option3" class="btn btn-primary"><i class="bi bi-cart-check-fill"></i> Click here to purchase</a>
+  </div>
+</div>
+</div>
+
+
+</div>
 <%- include('../partials/foot') %>
