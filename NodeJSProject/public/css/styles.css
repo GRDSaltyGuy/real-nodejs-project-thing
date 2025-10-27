@@ -1,14 +1,94 @@
+/* ===========================================================
+   Cleaned / consolidated styles.css
+   Theme-aware (light + dark), animations, carousel, ads, etc.
+   =========================================================== */
+
+/* ---------- Core variables (one :root) ---------- */
 :root {
-    --hue: calc(var(--student-hue, 81));
-    --primary: hsl(var(--hue), 70%, 45%);
-    --primary-600: hsl(var(--hue), 70%, 35%);
-    --bg: hsl(var(--hue), 45%, 97%);
-    --ink: #1b1b1b;
+  --hue: calc(var(--student-hue, 81));
+  --primary: hsl(var(--hue), 70%, 45%);
+  --primary-600: hsl(var(--hue), 70%, 35%);
+
+  /* base colors (light theme) */
+  --bg-primary: hsl(var(--hue), 45%, 97%); /* background */
+  --surface: #ffffff;                      /* card / panel */
+  --text-primary: #1b1b1b;
+  --muted: #6b6b6b;
+  --card-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  --accent: var(--primary);
+
+  /* layout */
+  --container-max-width: 1000px;
+}
+/*some basic hover animations*/
+.btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+/*basic animations end*/
+/*some ad code*/
+.floating-ad { opacity: 1; transform: translateY(-10px) translateX(0); transition: opacity 300ms ease, transform 300ms ease; }
+.floating-ad.show { opacity: 1; transform: translateY(0) translateX(0); }
+/*some ad code end*/
+/* ---------- Dark theme overrides (apply .dark-mode to <html> or <body>) ---------- */
+.dark-mode {
+  --bg-primary: hsl(220, 30%, 8%);
+  --surface: hsl(220, 25%, 14%);
+  --text-primary: #e8e8e8;
+  --muted: #bdbdbd;
+  --card-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  --accent: hsl(210, 85%, 60%);
 }
 
-* {
-    box-sizing: border-box;
+/* ---------- Base / Global ---------- */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
 }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  transition: background-color 320ms ease, color 320ms ease;
+}
+
+/* ---------- Containers / layout ---------- */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ---------- Site header / brand / nav ---------- */
+.site-header {
+  background: var(--primary);
+  color: #fff;
+  padding: .75rem 0;
+}
+
+.brand { font-weight: 700; font-size: 1.3rem; }
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 600;
+  opacity: .9;
+}
+nav a.active,
+nav a:hover { opacity: 1; text-decoration: underline; }
+
+/* ---------- Banners / hero ---------- */
 .header1 {
   background-image: url("/images_folder/bannerthing.png");
   background-repeat: no-repeat;
@@ -16,35 +96,12 @@
   background-size: cover;
   width: 100%;
   position: relative;
-
-  /* preserve original aspect ratio */
-  padding-top: 39.59%; /* 645 / 1629 * 100% */
-  min-height: 180px;   /* fallback for very small screens */
+  padding-top: 39.59%; /* maintain aspect ratio */
+  min-height: 180px;
   overflow: hidden;
 }
-#shoptitlecardthingy {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url("/images_folder/shoptitlethingy.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 50%;
-  position: relative;
 
-  /* preserve original aspect ratio */
-  padding-top: 39.59%; /* 645 / 1629 * 100% */
-  min-height: 180px;   /* fallback for very small screens */
-  overflow: hidden;
-}
-.centerMyImage {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* center any content inside the banner */
+/* helper for centering content inside banner */
 .header1 .header-content {
   position: absolute;
   inset: 0;
@@ -55,215 +112,173 @@
   pointer-events: none;
   color: white;
 }
-body {
-    margin: 0;
-    font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color: var(--ink);
-    background: var(--bg);
-}
-div.card#homecard {
-    background-color: black;
-    background: url("/images_folder/pc-fire.gif");
-    background-size: cover;       /* scales the image to cover the entire div */
-    background-position: center;  /* keeps it centered */
-    background-repeat: no-repeat; /*stops the thingy from repeating */
-}
-div.card#servicecard {
-    background-color: black;
-    background: url("/images_folder/hammer-pc.gif");
-    background-size: cover;       /* scales the image to cover the entire div */
-    background-position: center;  /* keeps it centered */
-    background-repeat: no-repeat; /*stops the thingy from repeating */
+
+/* optional "title card" banner */
+#shoptitlecardthingy {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("/images_folder/shoptitlethingy.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 50%;
+  position: relative;
+  padding-top: 39.59%;
+  min-height: 180px;
+  overflow: hidden;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-.site-header {
-    background: var(--primary);
-    color: #fff;
-    padding: .75rem 0;
-}
-
-.brand {
-    font-weight: 700;
-    font-size: 1.3rem;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 1rem;
-    font-weight: 600;
-    opacity: .9;
-}
-
-nav a.active,
-nav a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
+/* ---------- Card / hero surfaces respond to theme ---------- */
 .hero,
 .card {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .06);
-    margin: 1rem 0;
+  background: var(--surface);
+  color: var(--text-primary);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  margin: 1rem 0;
+  transition: background-color 320ms ease, box-shadow 320ms ease, transform 230ms ease;
 }
 
-.btn {
-    display: inline-block;
-    background: var(--primary);
-    color: #fff;
-    padding: .6rem 1rem;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.btn:hover {
-    background: var(--primary-600);
-}
-
-.site-footer {
-    margin-top: 2rem;
-    padding: 1rem 0;
-    color: #555;
-    text-align: center;
-}
-
-/* stuff for ads, ill go through and annotate it at some point.                                             */
-.ad-grid {
-  display: grid;
-  grid-template-columns: 1fr 300px; /* large banner + right column of small ads on wide screens */
-  gap: 1rem;
-  align-items: start;
-}
-
-/* mobile fallback */
-@media (max-width: 900px) {
-  .ad-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.ad {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+/* special media cards that use animated background GIFs */
+.card.has-media {
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  color: white; /* content over media typically white */
+}
+
+/* subtle overlay so text stays legible over GIFs */
+.card.has-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.18));
+  z-index: 0;
+  transition: background 320ms ease;
+}
+
+/* different overlay strength in dark mode (optional) */
+.dark-mode .card.has-media::before {
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+}
+
+/* ensure card content sits above overlay */
+.card.has-media > * { position: relative; z-index: 1; }
+
+/* ---------- GIF / media-backed card examples (IDs you used) ---------- */
+div.card#homecard {
+  background: url("/images_folder/pc-fire.gif") center/cover no-repeat;
+  background-color: black; /* fallback */
+}
+div.card#servicecard {
+  background: url("/images_folder/hammer-pc.gif") center/cover no-repeat;
+  background-color: black;
+}
+
+/* ---------- Buttons / accent ---------- */
+.btn,
+a.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+}
+.btn:hover { background: var(--primary-600); }
+
+/* ---------- Links and small text ---------- */
+a, .brand { color: var(--accent); }
+.muted, small, .site-footer { color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
   text-align: center;
 }
 
-.ad-large { padding: 0.5rem; }
-.ad-small { padding: 0.5rem; }
-
-.ad-img { width:100%; height:auto; display:block; object-fit:cover; }
-
-.ad-copy {
-  padding: 0.5rem;
-  font-size: 0.95rem;
-  color:#222;
+/* ---------- Ads grid (theme-aware) ---------- */
+.ad-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .ad-grid { grid-template-columns: 1fr; }
 }
 
-/* adds a little "sponsored" label */
-.ad::after{
+.ad {
+  background: var(--surface);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+.ad-large, .ad-small { padding: 0.5rem; }
+.ad-img { width:100%; height:auto; display:block; object-fit:cover; }
+.ad-copy { padding: 0.5rem; font-size: 0.95rem; color: var(--text-primary); }
+
+/* "Sponsored" label using a subtle color that adapts */
+.ad::after {
   content: "Sponsored";
   display:block;
   font-size:0.7rem;
-  color:#666;
+  color: var(--muted);
   padding:0.25rem 0;
-  opacity:0.8;
+  opacity:0.85;
 }
 
-/*Scary code segment 1*/
-/* Custom dark tab styles */
+/* ---------- Tabs & dropdowns (custom dark tab styles preserved) ---------- */
 .nav-tabs-dark {
-    background-color: #222;
-    border-bottom: 1px solid #080808;
+  background-color: #222;
+  border-bottom: 1px solid #080808;
 }
-
 .nav-tabs-dark > li > a {
-    color: #9d9d9d;
-    background-color: #222;
-    border: 1px solid transparent;
-    padding: 15px 30px; /* Increase padding to make tabs bigger */
-    font-size: 18px; /* Increase font size */
-    display: inline-block;
+  color: #9d9d9d;
+  background-color: #222;
+  border: 1px solid transparent;
+  padding: 15px 30px;
+  font-size: 18px;
+  display: inline-block;
 }
-
 .nav-tabs-dark > li.active > a,
 .nav-tabs-dark > li > a:hover,
 .nav-tabs-dark > li.active > a:focus {
-    color: #fff;
-    background-color: #080808;
-    border: 1px solid #080808;
+  color: #fff;
+  background-color: #080808;
+  border: 1px solid #080808;
 }
+.dropdown-menu { background-color: #222; }
+.dropdown-menu > li > a { color: #9d9d9d; }
+.dropdown-menu > li > a:hover { background-color: #080808; color: #fff; }
+.nav-tabs { width: auto; }
 
-.dropdown-menu {
-    background-color: #222;
-}
+/* ---------- Misc / utilities ---------- */
+.inverse { background-color: #121212; }
+#homeJumbotron { background-color: #303536; color: green; }
 
-.dropdown-menu > li > a {
-    color: #9d9d9d;
-}
+/* Logo sizing (be mindful in header) */
+.Logo { width: 500px; height: 500px; }
 
-.dropdown-menu > li > a:hover {
-    background-color: #080808;
-    color: #fff;
-}
-
-/* Use center-block for centering the tab container */
-.nav-tabs {
-    width: auto; /* Allow the tabs to only take up their content width */
-}
-/*Scary chatgpt code segment 1 end*/
-.inverse {
-    background-color: #121212;
-}
-#homeJumbotron {
-    background-color: #303536;
-    color: green
-}
-.Logo {
-    width: 500px;
-    height: 500px;
+/* ---------- Carousel fixes & helpers ---------- */
+.carousel-fixed {
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 .carousel-fixed .carousel-inner,
-.carousel-fixed .carousel-item {
-  height: 100%;
-}
+.carousel-fixed .carousel-item { height: 100%; }
+.carousel-fixed img { object-fit: cover; width: 100%; height: 100%; display: block; }
 
-.carousel-fixed img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.filterColors {
-    color:ghostwhite
-}
-.item2 {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-}
-.hidden {
-    display: none;
-}
-/* Optional, should change images in carousel to have a border
-.item {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-}
-*/
+/* custom control circle for Bootstrap icons-based controls */
 .carousel .control-circle {
   width: 3.25rem;
   height: 3.25rem;
@@ -275,3 +290,137 @@ nav a:hover {
 }
 .carousel-control-prev .control-circle { left: 10px; }
 .carousel-control-next .control-circle { right: 10px; }
+
+/* ---------- Small helpers ---------- */
+.centerMyImage { display: block; margin-left: auto; margin-right: auto; }
+.filterColors { color: ghostwhite; }
+.item2 { padding: 10px; margin: 5px; border: 1px solid rgba(0,0,0,0.12); }
+.hidden { display: none; }
+
+/* ---------- Animations / motion utilities ---------- */
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  :root { --reduce-motion: 1; }
+}
+
+/* Fade-in on load */
+.fade-in {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInUp 560ms cubic-bezier(.2,.9,.25,1) forwards;
+  animation-delay: 120ms;
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in.delay-1 { animation-delay: 160ms; }
+.fade-in.delay-2 { animation-delay: 240ms; }
+.fade-in.delay-3 { animation-delay: 320ms; }
+
+/* Card hover lift */
+.card.hover-lift:hover {
+  transform: translateY(-6px) scale(1.007);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+
+/* subtle pulse for CTAs */
+.pulse {
+  animation: pulseGlow 2200ms ease-in-out infinite;
+  --pulse-opacity: 0.06;
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+  50% { box-shadow: 0 18px 40px var(--accent) / var(--pulse-opacity); }
+  100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+}
+
+/* disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .hover-lift, .pulse { animation: none !important; transition: none !important; }
+}
+
+/* theme-toggle button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 6px;
+  font-size: 1.1rem;
+}
+.theme-toggle svg { transition: transform 220ms ease, color 220ms ease; }
+.theme-toggle:active svg { transform: scale(0.95); }
+
+/* small responsive tweaks */
+@media (max-width: 576px) {
+  .Logo { width: 220px; height: auto; }
+  .carousel-fixed { max-width: 280px; height: 220px; }
+}
+/*Some fun ad stuff*/
+/* ---------- Floating side ads (left + right) ---------- */
+.floating-ad {
+  position: fixed;
+  top: 35%;                  /* vertical position on screen (adjust as needed) */
+  transform: translateY(-35%);/* helps keep approx same visual alignment */
+  width: 160px;              /* typical small ad width */
+  max-width: 20vw;
+  z-index: 3000;             /* above page content but below modals if needed */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* left and right placement */
+.floating-ad.left { left: 16px; }
+.floating-ad.right { right: 16px; }
+
+/* inner ad styling */
+.floating-ad .ad-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.floating-ad .ad-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* copy and CTA */
+.floating-ad .ad-copy {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* close button top-right inside each floating ad */
+.floating-ad .ad-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* subtle hide for transparent backgrounds on dark-mode */
+.dark-mode .floating-ad { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); }
+
+/* responsive: hide on small screens so they don't block content
+@media (max-width: 992px) {
+  .floating-ad { display: none !important; }
+}
+some more ad stuff end*/

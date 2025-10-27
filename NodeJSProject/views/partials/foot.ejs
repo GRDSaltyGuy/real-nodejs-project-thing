@@ -6,6 +6,7 @@
 
 <!-- optional: initialize carousels or set interval defaults here -->
 <script>
+  
   // Example: set interval for a specific carousel (ms)
   // const myCarousel = document.querySelector('#carouselOne');
   // const carousel = new bootstrap.Carousel(myCarousel, { interval: 3000, ride: 'carousel' });
@@ -20,5 +21,112 @@
     <div>© <%= new Date().getFullYear() %> • Built by <%= site.ownerInitials %></div>
   </div>
 </footer>
+<!--Testing dark mode stuff-->
+<script>
+(function () {
+  const STORAGE_KEY = 'site:darkMode';
+  const root = document.documentElement; // or document.body if you prefer
+  const toggleBtn = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeToggleIcon');
+
+  // determine initial state:
+  // 1) saved user preference in localStorage
+  // 2) else system preference via matchMedia
+  function getInitial() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === '1') return true;
+    if (saved === '0') return false;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function applyDark(dark) {
+    if (dark) {
+      root.classList.add('dark-mode');
+      toggleBtn && toggleBtn.setAttribute('aria-pressed', 'true');
+      if (icon) { icon.className = 'bi bi-sun-fill'; icon.setAttribute('aria-hidden','true'); }
+    } else {
+      root.classList.remove('dark-mode');
+      toggleBtn && toggleBtn.setAttribute('aria-pressed', 'false');
+      if (icon) { icon.className = 'bi bi-moon-fill'; icon.setAttribute('aria-hidden','true'); }
+    }
+  }
+
+  // initialize
+  const initial = getInitial();
+  applyDark(initial);
+
+  // handle user toggles
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const isDark = root.classList.contains('dark-mode');
+      const next = !isDark;
+      applyDark(next);
+      // persist: '1' = dark, '0' = light
+      localStorage.setItem(STORAGE_KEY, next ? '1' : '0');
+    });
+  }
+
+  // Optional: listen for system theme changes if user hasn't explicitly chosen
+  // (only if no saved preference)
+  if (localStorage.getItem(STORAGE_KEY) === null && window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      applyDark(e.matches);
+    });
+  }
+})();
+</script>
+<!--Testing dark mode stuff end-->
+<!--ad stuff beginning-->
+<script>
+  
+(function () {
+  const HIDE_KEY_PREFIX = 'floatingAd:hidden:';
+  // Time-to-live (ms) for hide persistence (1 day)
+  const HIDE_TTL = 24 * 60 * 60 * 1000;
+
+  function isHidden(adId) {
+    try {
+      const raw = localStorage.getItem(HIDE_KEY_PREFIX + adId);
+      if (!raw) return false;
+      const parsed = JSON.parse(raw);
+      if (!parsed || !parsed.t) return false;
+      return (Date.now() - parsed.t) < HIDE_TTL;
+    } catch (e) { return false; }
+  }
+
+  function hideAd(adEl, adId, persist) {
+    if (!adEl) return;
+    adEl.style.display = 'none';
+    if (persist) {
+      try {
+        localStorage.setItem(HIDE_KEY_PREFIX + adId, JSON.stringify({ t: Date.now() }));
+      } catch(e) {}
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.floating-ad').forEach(ad => {
+      const adId = ad.dataset.adId || ad.id || Math.random().toString(36).slice(2,9);
+      // If user recently hid this ad, keep it hidden
+      if (isHidden(adId)) {
+        ad.style.display = 'none';
+        return;
+      }
+
+      // close button
+      const btn = ad.querySelector('.ad-close');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          hideAd(ad, adId, true); // persist choice
+        });
+      }
+
+      // clicking overlay shouldn't close - clicking the ad is a link as normal
+    });
+  });
+})();
+</script>
+<!--ad stuff end-->
 </body>
+<script></script>
 </html>

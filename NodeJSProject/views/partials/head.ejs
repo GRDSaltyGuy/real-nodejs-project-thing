@@ -9,5 +9,12 @@
   <title><%= title %> • <%= site.brandName %></title>
   <link rel="stylesheet" href="/css/styles.css" />
   <style>:root{ --student-hue: <%= site.themeHue %>; }</style>
+
 </head>
 <body>
+  <!-- Put this in your header partial where your nav is -->
+<button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">
+  <!-- sun / moon icons using Bootstrap Icons (already loaded) -->
+  <i id="themeToggleIcon" class="bi bi-moon-fill" aria-hidden="true"></i>
+  <span class="visually-hidden">Toggle dark mode</span>
+</button>
